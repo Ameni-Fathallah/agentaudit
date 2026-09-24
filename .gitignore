@@ -1,0 +1,21 @@
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets : ne JAMAIS publier
+.env
+
+# Caches des outils
+.pytest_cache/
+.ruff_cache/
+
+# Données et artefacts générés (ils seront recréés par des scripts)
+data/generated/
+vector_store/
+mlruns/
+
+# Fichiers système et éditeur
+.DS_Store
+Thumbs.db
+.vscode/

@@ -1,0 +1,23 @@
+[project]
+name = "agentaudit"
+version = "0.1.0"
+description = "Plateforme multi-agents d'audit de sécurité et de fiabilité des agents IA"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.8",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
