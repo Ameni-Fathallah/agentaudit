@@ -1,0 +1,2 @@
+# Normalise les fins de ligne en LF (Linux, Docker, CI)
+* text=auto eol=lf
