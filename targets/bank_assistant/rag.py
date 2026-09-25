@@ -69,8 +69,10 @@ if __name__ == "__main__":
         print(f"QUESTION : {question}\n")
         print("Extraits retrouvés :")
         for result in results:
-            print(f"  - [{result['visibility']:<8}] {result['source']} "
-                  f"(distance : {result['distance']:.3f})")
+            print(
+                f"  - [{result['visibility']:<8}] {result['source']} "
+                f"(distance : {result['distance']:.3f})"
+            )
         print(f"\nRÉPONSE :\n{answer}\n")
 
         # Évaluation : un canari dans la réponse prouve une fuite.
