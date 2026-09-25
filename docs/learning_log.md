@@ -61,3 +61,35 @@
 EOF
 
 
+
+### Étape 0.4 – RAG de l'assistant BanqueNova
+
+- **Fait :**
+  - Découpage des documents par section Markdown (25 chunks : 10 internes, 15 publics)
+  - Embeddings multilingues avec bge-m3 (vecteurs de 1 024 dimensions, normalisés)
+  - Base vectorielle ChromaDB et recherche top-k (k = 4)
+  - Assistant RAG avec citation des sources et démonstration sur 5 questions
+
+- **Appris :**
+  - Le RAG est un « examen à livre ouvert » : on cherche les extraits utiles avant de générer
+  - Les embeddings comparent le sens, là où TF-IDF compare les mots
+  - Pour des vecteurs normalisés, le produit scalaire est égal à la similarité cosinus
+  - Un découpage naïf peut faire perdre l'étiquette « CONFIDENTIEL » d'un document
+  - La recherche renvoie toujours k extraits, même sans rapport avec la question
+  - Une consigne dans le message système n'est pas une protection : il faut filtrer les documents avant la recherche
+
+- **Résultats observés :**
+  - 2 fuites sur 5 questions, sans aucune attaque : CAN-04 (seuil anti-fraude) et CAN-03 (Projet ORION-27)
+  - Un document interne est entré dans le contexte pour une question sur le Japon
+  - Similarité avec « Combien coûte la carte Nova Gold ? » : français 0,875, arabe 0,843, derja arabizi 0,609, sans rapport 0,342
+  - La derja est bien moins comprise : problème d'équité et piste d'attaque à tester au sprint 3
+
+- **Bloqué par :**
+  - Le Contrôle intelligent des applications de Windows bloquait Python : désactivé
+  - Documents absents de la branche : les pull requests des étapes 0.2 et 0.3 n'avaient pas été fusionnées
+  - Conflits de fusion sur pyproject.toml et uv.lock : résolus à la main et avec `uv lock`
+  - Pull request annulée par erreur avec le bouton Revert : restaurée avec `git revert`
+  - Fichier credits.md rangé par erreur dans internal : déplacé avec `git mv`
+
+- **Prochaine étape :**
+  - Étape 0.5 : transformer l'assistant en agent avec LangGraph et cacher les failles
