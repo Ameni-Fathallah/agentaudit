@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Plateforme multi-agents d'audit de sécurité et de fiabilité des agents IA"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "faker>=40.39.0",
+]
 
 [dependency-groups]
 dev = [
